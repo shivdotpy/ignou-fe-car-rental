@@ -2,38 +2,35 @@ import React, { useState } from "react";
 import { Input, Button } from "semantic-ui-react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-import "./AdminLogin.scss";
+import "./UserLogin.scss";
 
 import { API_ENDPOINTS, ROUTES } from "../../utils/constants";
 import { BUTTON_LABELS, FORM_HEADERS } from "../../utils/labels";
 
-const AdminLogin = () => {
+const UserLogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   let history = useHistory();
 
-  const adminLogin = () => {
+  const userLogin = () => {
     const request = {
       email,
       password,
     };
 
     axios
-      .post(
-        API_ENDPOINTS.BASE_URL + API_ENDPOINTS.ADMIN_LOGIN_ENDPOINT,
-        request
-      )
+      .post(API_ENDPOINTS.BASE_URL + API_ENDPOINTS.USER_LOGIN_ENDPOINT, request)
       .then((response) => history.push(ROUTES.BOOKINGS))
       .catch((error) => setErrorMessage(error.response.data.message));
   };
 
   return (
-    <div className="admin-login">
-      <div className="admin-login__box">
-        <h2>{FORM_HEADERS.ADMIN_LOGIN}</h2>
-        <div className="admin-login__box-input">
+    <div className="user-login">
+      <div className="user-login__box">
+        <h2>{FORM_HEADERS.USER_LOGIN}</h2>
+        <div className="user-login__box-input">
           <Input
             icon="mail"
             iconPosition="left"
@@ -42,7 +39,7 @@ const AdminLogin = () => {
             onChange={(event, { value }) => setEmail(value)}
           />
         </div>
-        <div className="admin-login__box-input">
+        <div className="user-login__box-input">
           <Input
             icon="key"
             iconPosition="left"
@@ -53,12 +50,12 @@ const AdminLogin = () => {
           />
         </div>
 
-        <div className="admin-login__action">
-          <Button primary onClick={adminLogin}>
+        <div className="user-login__action">
+          <Button primary onClick={userLogin}>
             {BUTTON_LABELS.LOGIN}
           </Button>
         </div>
-        <div className="admin-login__error-msg">
+        <div className="user-login__error-msg">
           <span>{errorMessage}</span>
         </div>
       </div>
@@ -66,4 +63,4 @@ const AdminLogin = () => {
   );
 };
 
-export default AdminLogin;
+export default UserLogin;
