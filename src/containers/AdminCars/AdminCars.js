@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Icon, Table, Modal } from "semantic-ui-react";
+import { Icon, Table, Modal, Button } from "semantic-ui-react";
 import axios from "axios";
 import "./AdminCars.scss";
 
 import AdminHeader from "../../components/AdminHeader/AdminHeader";
+import AdminCarModal from "../../components/AddCarModal/AddCarModal";
 
 import { PAGE_HEADERS } from "../../utils/labels";
 import { API_ENDPOINTS } from "../../utils/constants";
@@ -13,11 +14,18 @@ const AdminCars = () => {
   const [showCarModal, setShowCarModal] = useState(false);
 
   useEffect(() => {
+    getCars();
+  }, []);
+
+  const getCars = () => {
     axios
       .get(API_ENDPOINTS.BASE_URL + API_ENDPOINTS.ADMIN_ALL_CARS_ENDPOINT)
-      .then((response) => setCars(response.data.data))
+      .then((response) => {
+        setCars(response.data.data);
+        getCars();
+      })
       .catch((error) => console.error(error.response));
-  }, []);
+  };
 
   return (
     <div className="admin-cars">
@@ -25,7 +33,12 @@ const AdminCars = () => {
       <div className="admin-cars__container">
         <h3 className="admin-cars__header">
           {PAGE_HEADERS.ADMIN_CARS}{" "}
-          <Icon name="plus circle" className="pointer" size="large" />
+          <Icon
+            name="plus circle"
+            className="pointer"
+            size="large"
+            onClick={() => setShowCarModal(true)}
+          />
         </h3>
         <div className="admin-cars__table">
           <Table celled>
@@ -39,12 +52,14 @@ const AdminCars = () => {
             </Table.Header>
             <Table.Body>
               {cars.length ? (
-                <Table.Row>
-                  <Table.Cell>No Name Specified</Table.Cell>
-                  <Table.Cell>Unknown</Table.Cell>
-                  <Table.Cell negative>None</Table.Cell>
-                  <Table.Cell negative>None</Table.Cell>
-                </Table.Row>
+                cars.map((car) => (
+                  <Table.Row>
+                    <Table.Cell>{car.id}</Table.Cell>
+                    <Table.Cell>{car.name}</Table.Cell>
+                    <Table.Cell>{car.cost}</Table.Cell>
+                    <Table.Cell>{car.status}</Table.Cell>
+                  </Table.Row>
+                ))
               ) : (
                 <Table.Row>
                   <Table.Cell collapsing={true} textAlign="center">
@@ -58,7 +73,12 @@ const AdminCars = () => {
       </div>
 
       {/* ADD CARS MODAL */}
-      {showCarModal && <Modal open={showCarModal}></Modal>}
+      {showCarModal && (
+        <AdminCarModal
+          showCarModal={showCarModal}
+          setShowCarModal={setShowCarModal}
+        />
+      )}
     </div>
   );
 };

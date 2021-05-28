@@ -1,6 +1,8 @@
 export const BUTTON_LABELS = {
   LOGIN: "Login",
   REGISTER: "Register",
+  SAVE: "Save",
+  CLOSE: "Close",
 };
 
 export const FORM_HEADERS = {
