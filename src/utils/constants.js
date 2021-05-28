@@ -4,6 +4,7 @@ export const API_ENDPOINTS = {
   ADMIN_LOGIN_ENDPOINT: "/loginadmin",
   USER_LOGIN_ENDPOINT: "/loginuser",
   USER_REGISTER_ENDPOINT: "/createuser",
+  USER_CREATE_BOOKING_ENDPOINT: "/createbooking",
   ADMIN_ALL_CARS_ENDPOINT: "/allcars",
   ADMIN_ADD_CAR_ENDPOINT: "/addcar",
   ADMIN_DELETE_CAR_ENDPOINT: "/deletecar",

@@ -19,7 +19,7 @@ export const ADMIN_NAVBAR_LABELS = {
 };
 
 export const USER_NAVBAR_LABELS = {
-  USER_PANEL: "User Panel",
+  USER_PANEL: "Car Booking",
   CARS: "Cars",
   MY_BOOKINGS: "My Bookings",
   LOGOUT: "Logout",
@@ -27,4 +27,5 @@ export const USER_NAVBAR_LABELS = {
 
 export const PAGE_HEADERS = {
   ADMIN_CARS: "Admin Cars",
+  USER_CARS: "Available Cars for Booking",
 };
