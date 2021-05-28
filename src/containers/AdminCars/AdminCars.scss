@@ -1,0 +1,20 @@
+.admin-cars {
+  &__container {
+    padding: 16px;
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    i {
+      margin-left: 16px;
+      color: MediumSeaGreen;
+    }
+  }
+
+  &__table {
+    margin: 40px;
+  }
+}

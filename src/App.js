@@ -1,11 +1,13 @@
 import { BrowserRouter, Route } from "react-router-dom";
 
 import "semantic-ui-css/semantic.min.css";
-import "./App.css";
+import "./App.scss";
 
-import AdminLogin from "./containers/AdminLogin/AdminLogin";
-import UserLogin from "./containers/UserLogin/UserLogin";
 import UserRegistration from "./containers/UserRegistration/UserRegistration";
+import UserLogin from "./containers/UserLogin/UserLogin";
+import AdminLogin from "./containers/AdminLogin/AdminLogin";
+import AdminCars from "./containers/AdminCars/AdminCars";
+
 import { ROUTES } from "./utils/constants";
 
 function App() {
@@ -14,6 +16,7 @@ function App() {
       <Route path={ROUTES.USER_REGISTRATION} component={UserRegistration} />
       <Route path={ROUTES.USER_LOGIN} component={UserLogin} />
       <Route path={ROUTES.ADMIN_LOGIN} component={AdminLogin} />
+      <Route path={ROUTES.ADMIN_CARS} component={AdminCars} />
     </BrowserRouter>
   );
 }
