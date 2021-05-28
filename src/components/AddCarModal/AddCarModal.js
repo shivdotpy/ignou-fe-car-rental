@@ -6,7 +6,7 @@ import "./AddCarModal.scss";
 import { BUTTON_LABELS } from "../../utils/labels";
 import { API_ENDPOINTS } from "../../utils/constants";
 
-const AddCarModal = ({ showCarModal, setShowCarModal }) => {
+const AddCarModal = ({ showCarModal, setShowCarModal, getCars }) => {
   const [name, setname] = useState("");
   const [cost, setCost] = useState("");
 
@@ -20,7 +20,10 @@ const AddCarModal = ({ showCarModal, setShowCarModal }) => {
         API_ENDPOINTS.BASE_URL + API_ENDPOINTS.ADMIN_ADD_CAR_ENDPOINT,
         request
       )
-      .then((response) => setShowCarModal(false))
+      .then((response) => {
+        getCars();
+        setShowCarModal(false);
+      })
       .catch((error) => console.error(error.response));
   };
 

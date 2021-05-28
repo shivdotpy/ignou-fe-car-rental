@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Icon, Table, Modal, Button } from "semantic-ui-react";
+import { Icon, Table } from "semantic-ui-react";
 import axios from "axios";
 import "./AdminCars.scss";
 
@@ -22,6 +22,16 @@ const AdminCars = () => {
       .get(API_ENDPOINTS.BASE_URL + API_ENDPOINTS.ADMIN_ALL_CARS_ENDPOINT)
       .then((response) => {
         setCars(response.data.data);
+      })
+      .catch((error) => console.error(error.response));
+  };
+
+  const deleteCar = (id) => {
+    axios
+      .delete(
+        `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.ADMIN_DELETE_CAR_ENDPOINT}/${id}`
+      )
+      .then(() => {
         getCars();
       })
       .catch((error) => console.error(error.response));
@@ -48,16 +58,25 @@ const AdminCars = () => {
                 <Table.HeaderCell>Car Name (Model)</Table.HeaderCell>
                 <Table.HeaderCell>Day Cost</Table.HeaderCell>
                 <Table.HeaderCell>Status</Table.HeaderCell>
+                <Table.HeaderCell textAlign="center">Action</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
             <Table.Body>
               {cars.length ? (
                 cars.map((car) => (
-                  <Table.Row>
+                  <Table.Row key={car.id}>
                     <Table.Cell>{car.id}</Table.Cell>
                     <Table.Cell>{car.name}</Table.Cell>
                     <Table.Cell>{car.cost}</Table.Cell>
                     <Table.Cell>{car.status}</Table.Cell>
+                    <Table.Cell textAlign="center">
+                      <Icon
+                        name="trash"
+                        color="red"
+                        className="pointer"
+                        onClick={() => deleteCar(car.id)}
+                      />
+                    </Table.Cell>
                   </Table.Row>
                 ))
               ) : (
@@ -77,6 +96,7 @@ const AdminCars = () => {
         <AdminCarModal
           showCarModal={showCarModal}
           setShowCarModal={setShowCarModal}
+          getCars={getCars}
         />
       )}
     </div>

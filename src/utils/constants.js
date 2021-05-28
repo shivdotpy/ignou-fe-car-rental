@@ -6,6 +6,7 @@ export const API_ENDPOINTS = {
   USER_REGISTER_ENDPOINT: "/createuser",
   ADMIN_ALL_CARS_ENDPOINT: "/allcars",
   ADMIN_ADD_CAR_ENDPOINT: "/addcar",
+  ADMIN_DELETE_CAR_ENDPOINT: "/deletecar",
 };
 
 // ROUTES
