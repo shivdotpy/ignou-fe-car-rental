@@ -22,7 +22,10 @@ const UserLogin = () => {
 
     axios
       .post(API_ENDPOINTS.BASE_URL + API_ENDPOINTS.USER_LOGIN_ENDPOINT, request)
-      .then((response) => history.push(ROUTES.BOOKINGS))
+      .then((response) => {
+        localStorage.setItem("user", JSON.stringify(response.data.data));
+        history.push(ROUTES.USER_CARS);
+      })
       .catch((error) => setErrorMessage(error.response.data.message));
   };
 

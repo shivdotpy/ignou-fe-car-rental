@@ -18,6 +18,13 @@ export const ADMIN_NAVBAR_LABELS = {
   LOGOUT: "Logout",
 };
 
+export const USER_NAVBAR_LABELS = {
+  USER_PANEL: "User Panel",
+  CARS: "Cars",
+  MY_BOOKINGS: "My Bookings",
+  LOGOUT: "Logout",
+};
+
 export const PAGE_HEADERS = {
   ADMIN_CARS: "Admin Cars",
 };

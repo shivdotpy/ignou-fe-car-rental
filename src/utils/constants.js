@@ -13,6 +13,8 @@ export const API_ENDPOINTS = {
 export const ROUTES = {
   USER_REGISTRATION: "/user-registration",
   USER_LOGIN: "/user-login",
+  USER_CARS: "/user-cars",
+  USER_BOOKINGS: "/user-bookings",
   ADMIN_LOGIN: "/admin-login",
   ADMIN_CARS: "/admin-cars",
   ADMIN_BOOKINGS: "/admin-bookings",
