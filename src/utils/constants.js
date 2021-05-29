@@ -10,6 +10,7 @@ export const API_ENDPOINTS = {
   ADMIN_ADD_CAR_ENDPOINT: "/addcar",
   ADMIN_DELETE_CAR_ENDPOINT: "/deletecar",
   ADMIN_BOOKING_ENDPOINT: "/getallbookngs",
+  CANCEL_BOOKING_ENDPOINT: "/cancelbooking",
 };
 
 // ROUTES

@@ -67,7 +67,7 @@ const AdminCars = () => {
                   <Table.Row key={car.id}>
                     <Table.Cell>{car.id}</Table.Cell>
                     <Table.Cell>{car.name}</Table.Cell>
-                    <Table.Cell>{car.cost}</Table.Cell>
+                    <Table.Cell>Rs. {car.cost}</Table.Cell>
                     <Table.Cell>{car.status}</Table.Cell>
                     <Table.Cell textAlign="center">
                       <Icon

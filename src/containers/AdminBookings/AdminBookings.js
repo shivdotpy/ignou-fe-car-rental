@@ -24,7 +24,19 @@ const AdminBookings = () => {
       .catch((error) => console.error(error.response));
   };
 
-  const cancelBooking = () => {};
+  const cancelBooking = (id, car_id) => {
+    axios
+      .delete(
+        `${API_ENDPOINTS.BASE_URL}${API_ENDPOINTS.CANCEL_BOOKING_ENDPOINT}/${id}/${car_id}`
+      )
+      .then(() => {
+        getBookings();
+      })
+      .catch((error) => console.error(error.response));
+  };
+
+  // TODO
+  const completeBooking = (id, car_id) => {};
 
   return (
     <div>
@@ -66,7 +78,9 @@ const AdminBookings = () => {
                             name="close"
                             color="red"
                             className="pointer"
-                            // onClick={() => deleteCar(car.id)}
+                            onClick={() =>
+                              cancelBooking(booking.id, booking.car_id)
+                            }
                           />
                         </>
                       ) : null}
@@ -76,7 +90,7 @@ const AdminBookings = () => {
               ) : (
                 <Table.Row>
                   <Table.Cell collapsing={true} textAlign="center">
-                    No Cars Available, Please add some cars
+                    No Booking Available
                   </Table.Cell>
                 </Table.Row>
               )}
