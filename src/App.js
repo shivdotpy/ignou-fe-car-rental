@@ -8,6 +8,7 @@ import UserCars from "./containers/UserCars/UserCars";
 import AdminLogin from "./containers/AdminLogin/AdminLogin";
 import AdminCars from "./containers/AdminCars/AdminCars";
 import UserBookings from "./containers/UserBookings/UserBookings";
+import AdminBookings from "./containers/AdminBookings/AdminBookings";
 
 import { ROUTES } from "./utils/constants";
 
@@ -20,6 +21,7 @@ function App() {
       <Route path={ROUTES.USER_BOOKINGS} component={UserBookings} />
       <Route path={ROUTES.ADMIN_LOGIN} component={AdminLogin} />
       <Route path={ROUTES.ADMIN_CARS} component={AdminCars} />
+      <Route path={ROUTES.ADMIN_BOOKINGS} component={AdminBookings} />
     </BrowserRouter>
   );
 }
