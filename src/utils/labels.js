@@ -28,4 +28,5 @@ export const USER_NAVBAR_LABELS = {
 export const PAGE_HEADERS = {
   ADMIN_CARS: "Admin Cars",
   USER_CARS: "Available Cars for Booking",
+  USER_BOOKINGS: "Your Bookings",
 };
